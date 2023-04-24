@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Power Analytic</title>
+<style>
+    html{
+        scroll-behavior: smooth;
+    }
+
+        *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body{
+        background-image: url(https://static.vecteezy.com/system/resources/previews/000/523/378/original/web-development-application-design-coding-and-programming-on-laptop-and-smartphone-concept-with-programming-language-and-program-code-and-layout-on-screen-vector.jpg);
+        background-size: cover;
+        height: 100vh;
+    }
+    nav{
+            font-family: industry, monospace;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: transparent;
+            padding: 35px 0;
+            
+            width: 100%;
+            transition: all .7s;  
+            position: sticky;
+            top: 0;
+        }
+
+    .logo{
+        font-size: 2em;
+        cursor: pointer;
+    }
+    .navi{
+
+        list-style: none;
+        display: flex;
+    }
+    li a{
+        padding: 0  20px;
+        text-decoration: none;
+        color: white;
+        text-transform: uppercase;
+    }
+        
+
+        .log{
+           
+            font-size: 15px;
+            background-color: #dcdcdc;
+            color: black;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: 1s background;
+            
+        }
+
+        .log:hover{
+            background-color: #a1a1a1;
+            transition: 1s background;
+        }
+        .cad{
+            padding: 10px 40px;
+            font-size: 15px;
+            background-color: #202020;
+            color: #fff;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: 1s background;
+        }
+        .cad:hover{
+            background-color: #3d3d3d;
+            transition: 1s background;
+        }
+
+        .box{
+            display: flex;
+        }
+
+
+        .text{ 
+            position: relative;
+            margin: 0 10px;
+            padding: 10px 20px;
+            color: white;
+            text-decoration: none;
+
+            overflow: hidden;  
+            }
+        .text::before{
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100vw;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(24, 67, 78, 0.9);
+            z-index: -1;
+            transition: all .7s;
+        }
+
+        .text::before{
+            width: 0%;
+            height: 50%;
+        }
+        .text:hover::before{
+            width: 100%;
+            border-left: 3px solid white ;
+            border-right: 3px solid white ;
+            border-bottom-left-radius: 5px ;
+            border-top-right-radius: 5px ;
+            
+        }
+        .logo:hover{
+            transform: scale(1.3);
+            transition: all .7s;    
+        }
+
+
+
+        .site{
+            background-image: url(https://static.vecteezy.com/system/resources/previews/000/523/378/original/web-development-application-design-coding-and-programming-on-laptop-and-smartphone-concept-with-programming-language-and-program-code-and-layout-on-screen-vector.jpg);
+            background-size: cover;
+            height: 100vh;
+         
+        }
+        .site p{
+            text-align: center;
+            justify-content: center;
+            position: absolute;
+            top: 40%;
+            left: 65vw;
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+            max-width: 30%;
+            font-size: 1.5em;
+        }
+        .power p{
+            text-align: center;
+            justify-content: center;
+            position: absolute;
+            top: 20%;
+            left: 5vw;
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+            max-width: 50%;
+            font-size: 1.5em;
+        }
+        .dados p{
+            text-align: center;
+            justify-content: center;
+            position: absolute;
+            top: 30%;
+            left: 60vw;
+            font-family:Arial, Helvetica, sans-serif;
+            color: white;
+            max-width: 30%;
+            font-size: 1.5em;
+            
+        }
+
+        .power{
+            background-image: url(https://www.many.co.uk/wp-content/uploads/2020/02/Header-2-1880x940.png);
+            background-size: cover;
+            height: 100vh;
+            background-position: center;
+            position: relative;
+            box-shadow: 1px 1px 10px 3px black;
+        }
+        .dados{
+            background-image: url(https://www.anahuac.mx/mexico/sites/default/files/noticias/Alumna-analiza-la-comunicacion-digital-de-100-destacadas-empresas.jpg);
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            position: relative;
+            box-shadow: 1px 1px 10px 3px black;
+        }
+
+        .bi{
+            bottom: 25vw;
+            position: absolute;
+            left: 20%;
+            text-decoration: none;
+            color: white;
+            background: #D3095E;
+            box-shadow: 2px 2px 8px black;
+            border: 3px solid black;
+            padding: 10px 30px;
+        }
+        .bi:hover{
+            background: #191049;
+            color: #a1a1a1;
+        }  
+        /* animaçao */
+
+    /* [data-anime]{
+        opacity: 0;
+        transition: .3s;
+    }
+    [data-anime="left"]{
+        transform: translate3d(-50px, 0, 0);
+    }
+
+    [data-anime].animate {
+        opacity: 1;
+        transform: translate3d(0px, 0px, 0px);
+    }
+
+    [data-anim]{
+        opacity: 0;
+        transition: .7s;
+    }
+    [data-anim="left"]{
+        transform: translate3d(-50px, 0, 0);
+    }
+    [data-anim="right"]{
+        transform: translate3d(50px, 0, 0);
+    }
+
+    [data-anim].animat {
+        opacity: 1;
+        transform: translate3d(0px, 0px, 0px);
+    } */
+
+    img{
+        width: 50px;
+        height: 50px;
+        margin: 0;
+        padding: 0;
+        transform: scale(2)
+    }
+    
+
+
+:root {
+    --cb: cubic-bezier(.05, .61, .41, .95);
+  }
+  
+  #bo {
+   
+   position: absolute;
+   top: 60%;
+   left: 10vh;
+  }
+  
+  #bo{
+    position: relative;
+  }
+
+  
+  .cards {
+    display: flex;
+    max-width: 700px;
+    width: calc(100% - 100px);
+    height: 300px;
+  }
+  
+  .title, .title2{
+    color: black;
+  }
+  .cards .card .info .title {
+
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  
+  .cards .card .label .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 40px;
+    height: 40px;
+    background-color: white;
+    color: var(--color);
+    border-radius: 50%;
+  }
+  
+  .cards .card .label .info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 10px;
+    white-space: pre;
+    transition: 1s var(--cb);
+  }
+  
+  .cards .card {
+    position: relative;
+    min-width: 60px;
+    background: var(--bg);
+    overflow: hidden;
+    margin: 5px;
+    background-size: auto 150%;
+    background-position: center;
+    cursor: pointer;
+    transition: 0.5s var(--cb);
+    border-radius: 30px;
+  }
+  
+  .cards .card .label {
+    display: flex;
+    position: absolute;
+    right: 0;
+    height: 40px;
+    transition: 0.5s var(--cb);
+  }
+  
+  .cards .card.active .label {
+    bottom: 20px;
+    left: 20px;
+  }
+  
+  .cards .card.active {
+    flex-grow: 10000;
+    background-size: auto 100%;
+  }
+  
+  .cards .card:not(.active) .label {
+    bottom: 10px;
+    left: 10px;
+  }
+  
+  .cards .card .shadow {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: linear-gradient(
+      0, #0004, transparent
+    );
+  }
+  
+  .cards .card.active .info {
+    opacity: 1;
+  }
+  
+  .cards .card:not(.active) .info {
+    opacity: 0;
+  }
+
+
+  @media (min-width:800px) and (max-width: 1300px){
+    img{
+        width: 30px;
+        height: 30px;
+        margin: 0;
+        padding: 0;
+        transform: scale(2)
+    }
+    nav{
+            padding: 10px 0;
+            
+        }
+.text{
+    font-size: 10px;
+}
+
+.site p{
+            text-align: center;
+            justify-content: center;
+            position: absolute;
+            top: 40%;
+            left: 65vw;
+          
+            max-width: 30%;
+            font-size: 1em;
+        }
+        .power p{
+            text-align: center;
+            justify-content: center;
+            position: absolute;
+            top: 20%;
+            left: 5vw;
+            
+           
+            max-width: 50%;
+            font-size: 1em;
+        }
+        .dados p{
+            text-align: center;
+            justify-content: center;
+            position: absolute;
+            top: 30%;
+            left: 60vw;
+           
+            max-width: 30%;
+            font-size: 1em;
+            
+        }
+
+
+
+        #bo {
+   top: 66%;
+   left: 10vh;
+  }
+
+  .cards {
+    max-width: 500px;
+    height: 170px;
+  }
+
+
+  .cards .card .info .title {
+
+font-size: 0.8rem;
+}
+.title2 {
+    font-size: 0.5rem;
+}
+
+.cards .card {
+   
+   border-radius: 20px;
+   min-width: 40px;
+}
+
+  }
+
+
+
+
+  @media (min-width:1px) and (max-width: 800px){
+    img{
+        width: 10px;
+        height: 10px;
+        margin: 0;
+        padding: 0;
+       
+    }
+    nav{
+            margin: 0;
+            padding: 0;
+        }
+.text{
+    
+    padding: 1px 0;
+    font-size: 5px;
+    margin: 0px 10px;
+}
+
+
+
+
+.site p{
+            text-align: center;
+            justify-content: center;
+            position: absolute;
+            top: 40%;
+            left: 65vw;
+          
+            max-width: 30%;
+            font-size: 0.4em;
+        }
+        .power p{
+            text-align: center;
+            justify-content: center;
+            position: absolute;
+            top: 10%;
+            left: 5vw;
+            
+           
+            max-width: 60%;
+            font-size: 5px;
+        }
+        .dados p{
+            text-align: center;
+            justify-content: center;
+            position: absolute;
+            top: 30%;
+            left: 60vw;
+           
+            max-width: 30%;
+            font-size: 0.4em;
+            
+        }
+
+
+        #bo {
+   top: 50%;
+   left: 10vh;
+  }
+
+  .cards {
+    max-width: 400px;
+    height: 70px;
+  }
+
+
+  .cards .card .info .title {
+top: 80%;
+position: relative;
+font-size: 0.4rem;
+}
+.title2 {
+    position: relative;
+    font-size: 0.2rem;
+    top: 78%;
+}
+.cards .card {
+   
+    border-radius: 10px;
+    min-width: 10px;
+}
+
+
+
+  .cards .card .label .icon {
+    min-width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: transparent;
+    position: relative;
+    top: 120%;
+    left: -10px;
+  }
+  .text:hover::before{
+            width: 100%;
+            border-left: 1px solid white ;
+            border-right: 1px solid white ;
+            border-bottom-left-radius: 2px ;
+            border-top-right-radius: 2px ;
+            
+        }
+  
+  }
+
+
+  
+
+</style>
+</head>
+<body >
+    <nav>
+        <div class="bn">
+            <div class="logo"><img src="OIG-fotor-bg-remover-2023042485755.png" alt=""></div>
+        </div>
+        <div class="name">
+            <ul class="navi">
+                <div class="box"></div>
+                <li><a class="text" href="#power">Power BI</a></li>
+                <li><a class="text"  href="#dados">analise de Dados</a></li>
+                <li><a class="text"  href="#site">Sites</a></li>
+            </ul>
+        </div>
+    </nav>
+         <div class="site" id="site" >
+            <p data-anim="right">Você quer aumentar suas vendas e alcançar mais clientes? Então você precisa de um site personalizado para divulgar seus produtos. Com um site personalizado, você pode mostrar seus produtos de forma atraente e profissional, além de facilitar o contato com seus potenciais compradores. Um site personalizado também ajuda a melhorar sua reputação e credibilidade no mercado. Não perca tempo e tenha seu próprio site personalizado!</p>
+         </div>
+         <div class="power" id="power" >
+            <p data-anime="left">O Power BI é uma ferramenta incrível para visualizar e analisar seus dados de forma interativa e personalizada. Com o Power BI, você pode criar relatórios profissionais que mostram o seu rendimento, os seus gráficos ilustrativos e as suas simulações e análises de comparação anual. Você também pode escolher os seus próprios indicadores e formatos para apresentar os seus dados da maneira que quiser. O Power BI é fácil de usar e se integra com várias fontes de dados, como o Excel, o Salesforce e o Azure. Experimente o Power BI hoje e descubra como ele pode ajudá-lo a tomar decisões melhores e mais rápidas.</p> 
+            <!-- <a class="bi" href="ft.html">VEJA FOTOS</a> -->
+              
+            
+            <div class="dark" id="bo" >
+
+                <div class="cards">
+        
+                    <div class="card active"style="--bg: url(https://i.pinimg.com/736x/88/be/5c/88be5c00d023f0e4a2ba5272e70c86fe.jpg)">
+                        <div class="shadow"></div>
+                        <div class="label">
+                            <div class="icon" style="--color: green">
+                                <ion-icon name="sunny"></ion-icon>
+                            </div>
+                            <div class="info">
+                                <div class="title"> FATURAMENTO</div>
+                                <div class="title2">TODA SAUAS VENDAS</div>
+                            </div>
+                        </div>
+                    </div>
+            
+        
+            
+                    <div class="card" style="--bg: url(https://i.pinimg.com/736x/a0/ba/22/a0ba22c58d80d57dab8c860627634a86.jpg)" >
+                        <div class="shadow"></div>
+                        <div class="label">
+                            <div class="icon" style="--color: blue">
+                                <ion-icon name="sparkles"></ion-icon>
+                            </div>
+                            <div class="info">
+                                <div class="title"> COMPARATIVO</div>
+                                <div class="title2">COMPARE SEUS INVESTIMENTO COM LUCRO</div>
+                            </div>
+                        </div>
+                    </div>
+            
+                     
+                    <div class="card"style="--bg: url(https://i.pinimg.com/564x/5f/76/cb/5f76cb24a97c57c8595e458e6301db8e.jpg)">
+                        <div class="shadow"></div>
+                        <div class="label">
+                            <div class="icon" style="--color: orange">
+                                <ion-icon name="thunderstorm"></ion-icon>
+                            </div>
+                            <div class="info">
+                                <div class="title"> COMPARAÇAO ANUAL</div>
+                                <div class="title2">DESCUBRA O CRECIMENTO DE SUA LOJA</div>
+                            </div>
+                        </div>
+                    </div>
+            
+                     
+                    <div class="card "style="--bg: url(https://i.pinimg.com/564x/b4/b6/d1/b4b6d1f355e53a679e3c5f101b4572ae.jpg)">
+                        <div class="shadow"></div>
+                        <div class="label">
+                            <div class="icon" style="--color: black">
+                                <ion-icon name="snow"></ion-icon>
+                            </div>
+                            <div class="info">
+                                <div class="title"> FLUXO DE VENDA</div>
+                                <div class="title2">TODA SUA VENDA EM UMA SO TELA</div>
+                            </div>
+                        </div>
+                    </div>
+            
+                </div>
+              </div>
+        
+
+
+
+         </div>
+         <div class="dados" id="dados" >
+            <p data-anim="right">SQL é uma linguagem de consulta estruturada que permite manipular e analisar dados  armazenados em bancos de dados relacionais. Com SQL, você pode criar, atualizar, deletar e pesquisar tabelas e registros de forma rápida e fácil. SQL também oferece recursos avançados como funções agregadas, junções, subconsultas e procedimentos armazenados.</p>
+         </div>
+</body>
+
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" ></script>
+
+<script>
+
+
+
+// const TARG = document.querySelectorAll('[data-anime]');
+// let animacao = 'animate'
+
+// const TAR = document.querySelectorAll('[data-anim]');
+// let animaca = 'animat'
+
+// function animacaoScrollLeft(){
+//     const pointToFirstLeft = window.pageYOffset + -450 
+//     if((pointToFirstLeft) > TARG[0].offsetTop){
+//         TARG[0].classList.add(animacao)
+//     }else{
+//         TARG[0].classList.remove(animacao)
+//     }
+// }
+// function animacaoScrollFirstRight(){
+//     const pointToFirstRight = window.pageYOffset + ((window.innerHeight * 3)/4)
+//     if((pointToFirstRight) > TAR[0].offsetTop){
+//         TAR[0].classList.add(animaca)
+//     }else{
+//         TAR[0].classList.remove(animaca)
+//     }
+// }
+// function animacaoScrollSecondRight(){
+//     const pointToSecondRight = window.pageYOffset / 6
+//     if((pointToSecondRight) > TAR[1].offsetTop){
+//         TAR[1].classList.add(animaca)
+//     }else{
+//         TAR[1].classList.remove(animaca)
+//     }
+// }
+// if(TAR.length && TAR.length >= 1){
+//     window.addEventListener('scroll', ()=>{
+//         animacaoScrollFirstRight()
+//         animacaoScrollLeft()
+//         animacaoScrollSecondRight()
+//     })
+// }
+
+
+
+$(".card").click(function () {
+    $(".card").removeClass("active");
+    $(this).addClass("active");
+  });
+
+
+
+  document.addEventListener('gesturestart', function(e) {
+    e.preventDefault();
+  });
+</script>
+</html>
